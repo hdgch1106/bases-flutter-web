@@ -16,7 +16,7 @@ class _CounterViewState extends State<CounterView> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("Contado Stateful", style: TextStyle(fontSize: 20)),
+        const Text("Contador Stateful", style: TextStyle(fontSize: 20)),
         FittedBox(
           fit: BoxFit.contain,
           child: Padding(

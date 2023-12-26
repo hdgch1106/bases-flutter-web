@@ -1,7 +1,5 @@
 import 'package:bases_flutter_web/locator.dart';
-import 'package:bases_flutter_web/router/route_generator.dart';
-import 'package:bases_flutter_web/services/navigation_service.dart';
-import 'package:bases_flutter_web/ui/layout/main_layout_page.dart';
+import 'package:bases_flutter_web/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,10 +13,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'RutasApp',
-      initialRoute: '/stateful',
+      routerConfig: appRouter,
+      /* initialRoute: '/stateful',
       onGenerateRoute: RouteGenerator.generateRoute,
       navigatorKey: locator<NavigationService>().navigatorKey,
       builder: (_, child) {
@@ -26,10 +25,10 @@ class MyApp extends StatelessWidget {
           child: child ?? const CircularProgressIndicator(strokeWidth: 2),
         );
       },
-      // routes: {
-      //   '/stateful': (_) => const CounterPage(),
-      //   '/riverpod': (_) => const CounterRiverpodPage(),
-      // },
+      routes: {
+        '/stateful': (_) => const CounterPage(),
+        '/riverpod': (_) => const CounterRiverpodPage(),
+      }, */
     );
   }
 }
