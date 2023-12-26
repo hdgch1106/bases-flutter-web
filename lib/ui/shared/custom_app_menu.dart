@@ -1,5 +1,3 @@
-import 'package:bases_flutter_web/locator.dart';
-import 'package:bases_flutter_web/services/navigation_service.dart';
 import 'package:bases_flutter_web/ui/shared/custom_flat_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -11,7 +9,7 @@ class CustomAppMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (_, constraints) {
-        return (constraints.maxWidth > 520)
+        return (constraints.maxWidth > 860)
             ? const _TabletDesktopMenu()
             : const _MobileMenu();
       },
@@ -53,7 +51,19 @@ class _TabletDesktopMenu extends StatelessWidget {
             onPressed: () => context.go("/page"),
             /* onPressed: () => Navigator.pushNamed(context, "/page"),
             onPressed: () => locator<NavigationService>().navigateTo("/page"), */
-          )
+          ),
+          const SizedBox(width: 10),
+          CustomFlatButton(
+            text: "Contador Stateful 100",
+            color: Colors.black,
+            onPressed: () => context.go("/stateful/100"),
+          ),
+          const SizedBox(width: 10),
+          CustomFlatButton(
+            text: "Contador Riverpod 500",
+            color: Colors.black,
+            onPressed: () => context.go("/riverpod?q=500"),
+          ),
         ],
       ),
     );
@@ -74,25 +84,40 @@ class _MobileMenu extends StatelessWidget {
           CustomFlatButton(
             text: "Contador Stateful",
             color: Colors.black,
-            //onPressed: () => Navigator.pushNamed(context, "/stateful"),
+            onPressed: () => context.go("/stateful"),
+            /* onPressed: () => Navigator.pushNamed(context, "/stateful"),
             onPressed: () =>
-                locator<NavigationService>().navigateTo("/stateful"),
+                locator<NavigationService>().navigateTo("/stateful"), */
           ),
           const SizedBox(width: 10),
           CustomFlatButton(
             text: "Contador Riverpod",
             color: Colors.black,
-            //onPressed: () => Navigator.pushNamed(context, "/riverpod"),
+            onPressed: () => context.go("/riverpod"),
+            /* onPressed: () => Navigator.pushNamed(context, "/riverpod"),
             onPressed: () =>
-                locator<NavigationService>().navigateTo("/riverpod"),
+                locator<NavigationService>().navigateTo("/riverpod"), */
           ),
           const SizedBox(width: 10),
           CustomFlatButton(
             text: "Otra Página",
             color: Colors.black,
-            //onPressed: () => Navigator.pushNamed(context, "/page"),
-            onPressed: () => locator<NavigationService>().navigateTo("/page"),
-          )
+            onPressed: () => context.go("/page"),
+            /* onPressed: () => Navigator.pushNamed(context, "/page"),
+            onPressed: () => locator<NavigationService>().navigateTo("/page"), */
+          ),
+          const SizedBox(width: 10),
+          CustomFlatButton(
+            text: "Contador Stateful 100",
+            color: Colors.black,
+            onPressed: () => context.go("/stateful/100"),
+          ),
+          const SizedBox(width: 10),
+          CustomFlatButton(
+            text: "Contador Riverpod 500",
+            color: Colors.black,
+            onPressed: () => context.go("/riverpod?q=500"),
+          ),
         ],
       ),
     );

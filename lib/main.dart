@@ -1,10 +1,9 @@
-import 'package:bases_flutter_web/locator.dart';
 import 'package:bases_flutter_web/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  setupLocator();
+  //setupLocator();
   runApp(const ProviderScope(child: MyApp()));
 }
 

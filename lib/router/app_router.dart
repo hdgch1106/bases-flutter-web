@@ -33,7 +33,18 @@ final appRouter = GoRouter(
           pageBuilder: (context, state) {
             return NoTransitionPage(
               key: state.pageKey,
-              child: const CounterView(),
+              child: const CounterView(base: "10"),
+            );
+          },
+        ),
+        GoRoute(
+          path: "/stateful/:base",
+          parentNavigatorKey: _shellNavigatorKey,
+          pageBuilder: (context, state) {
+            final base = state.pathParameters["base"] ?? "10";
+            return NoTransitionPage(
+              key: state.pageKey,
+              child: CounterView(base: base),
             );
           },
         ),
@@ -41,9 +52,10 @@ final appRouter = GoRouter(
           path: "/riverpod",
           parentNavigatorKey: _shellNavigatorKey,
           pageBuilder: (context, state) {
+            final base = state.uri.queryParameters["q"];
             return NoTransitionPage(
               key: state.pageKey,
-              child: const CounterRiverpodView(),
+              child: CounterRiverpodView(base: base),
             );
           },
         ),
